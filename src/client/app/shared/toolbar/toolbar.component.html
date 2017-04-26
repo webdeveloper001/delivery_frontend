@@ -1,2 +1,17 @@
-<h1>Angular Seed</h1>
+<a [routerLink]="['/']"> <h1>DENNING <b>DELIVERY</b></h1> </a>
+
 <div class="more"></div>
+<input type="hidden" value="{{ isAuthenticated() }}" />
+<ul class="pull-right top-nav" *ngIf="isAuthenticated() == false">
+	<li> 
+		<a [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Login </a>
+	</li>
+	<li>
+		<a [routerLink]="['/register']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Register </a>
+	</li>
+</ul>
+<ul class="pull-right top-nav" *ngIf='isAuthenticated() == true'>
+	<li>
+		<a [routerLink]="['/logout']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Logout </a>
+	</li>
+</ul>

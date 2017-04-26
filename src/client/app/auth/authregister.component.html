@@ -1,0 +1,50 @@
+<form class="text-center ui form" #f='ngForm' (ngSubmit)="onSubmit(f.value)" >
+	<h1 class="text-left"> Sign up </h1>
+	<div class="form-group">
+		<label class="text-right" > Username </label>
+		<input type="text" name="username" ngModel class="form-control" required />
+	</div>
+	<div class="form-group">
+		<label class="text-right" > Email </label>
+		<input type="email" name="email" ngModel class="form-control" required />
+	</div>
+	<div class="form-group">
+		<label class="text-right"> Password </label>
+		<input type="password" name="password" ngModel class="form-control" required />
+	</div>
+	<div class="form-group xs-margin">
+		<label class="text-right"> Password Confirm </label>
+		<input type="password" required />
+	</div>
+
+	<hr/>
+
+	<div class="form-group xs-margin">
+		<label class="text-right"> First Name </label>
+		<input type="text" name="first_name" ngModel class="form-control" required />
+	</div>
+	<div class="form-group xs-margin">
+		<label class="text-right"> Last Name </label>
+		<input type="text" name="last_name" ngModel class="form-control" required />
+	</div>
+	<div class="form-group xs-margin">
+		<label class="text-right"> Location </label>
+		<input type="text" name="location" ngModel class="form-control" required />
+	</div>
+	<div class="form-group xs-margin">
+		<label class="text-right"> Phone </label>
+		<input type="number" name="phone" ngModel class="form-control" required />
+	</div>
+
+	<hr/>
+
+	<div class="form-group text-center ">
+		<input type="submit" name="Signup" value="Signup" class="form-control"/>
+	</div>
+	<p class="text-center"> ---------- OR ---------- </p>
+	<div class="form-group text-center">
+		<input type="submit" name="signupwithoffice" value="Signup With Office" />
+		<input type="submit" name="signupwith365" value="Signup With 365" />
+	</div>
+
+</form>

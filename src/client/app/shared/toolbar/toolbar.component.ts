@@ -9,5 +9,13 @@ import { Component } from '@angular/core';
   templateUrl: 'toolbar.component.html',
   styleUrls: ['toolbar.component.css']
 })
-export class ToolbarComponent { }
+export class ToolbarComponent { 
+	loggedin = eval(localStorage.getItem('Auth'));
+
+	isAuthenticated() {
+		let auth = eval(localStorage.getItem('Auth'));
+		if (auth == true) return true;
+		return false;
+	}
+}
 

@@ -3,3 +3,10 @@
   display: flex;
   flex-flow: column;
 }
+.content {
+}
+.clearfix {
+	clear: both;
+	display: inline-block;
+
+}

@@ -1,0 +1,11 @@
+<div class="client-content">
+	<nav>
+		<a [routerLink]="['/client']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Dashboard </a>
+		<a [routerLink]="['/client/neworder']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Build a new Order </a>
+		<a [routerLink]="['/client/orderstatus']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Order Status </a>
+		<a [routerLink]="['/client/orderlist']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Order list </a>
+		<a [routerLink]="['/client/profile']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Profile </a>
+	</nav>
+	<router-outlet>  </router-outlet>
+	<div class="clearfix"> </div>
+</div>
