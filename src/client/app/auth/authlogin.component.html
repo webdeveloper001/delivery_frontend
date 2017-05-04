@@ -1,21 +1,28 @@
-<form class="text-center ui form" #f='ngForm' (ngSubmit)="onSubmit(f.value)" >
-	<h1 class="text-left ui header" > Login </h1>
-	<div class="form-group field">
-		<label class="text-right"> Email </label>
-		<input type="email" name="email" ngModel class="form-control" />
-	</div>
-	<div class="form-group field">
-		<label class="text-right"> Password </label>
-		<input type="password" name="password" ngModel class="form-control" />
-	</div>
-	<div class="form-group text-center field">
-		<input type="submit" name="Login" value="Login" class="form-control" />
-	</div>
-	<p class="text-center"> ---------- OR ---------- </p>
-	<div class="form-group text-center">
-		<input type="submit" name="signinwithoffice" class="form-control" [(ngModel)]="signoffice" />
-		<input type="submit" name="signinwith365" class="form-control"  [(ngModel)]="sign365" />
-	</div>
-	<br/>
-	<div> You don't have account yet? please <a [routerLink]="['/register']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Sign up here </a> </div>
-</form>
+<div class="auth-show text-center">
+	<label style="font-size: 500px; color: #555; line-height: 0.8;">
+	DD
+	</label>
+</div>
+<div class="auth-form">
+	<form class="ui form" #f='ngForm' (ngSubmit)="onSubmit(f.value)" >
+		<h1 class="text-left ui header" > Login </h1>
+		<div layout="column">
+			<md-input-container class="full-width">
+				<input mdInput type="email" name="email" ngModel class="form-control" placeholder="Email" />
+			</md-input-container>
+			<md-input-container class="full-width">
+				<input mdInput type="password" name="password" ngModel class="md-block form-control" placeholder="Password" />
+			</md-input-container>
+		</div>
+		<div class="text-center">
+			<button md-raised-button type="submit" name="login" > Login </button>
+		</div>
+		<p class="text-center"> ---------- OR ---------- </p>
+		<div class="text-center">
+			<button md-raised-button type="submit" name="signinwithoffice" > SignIn with Office </button>
+			<button md-raised-button type="submit" name="signinwith365"  > SignIn with 365 </button>
+		</div>
+		<br/>
+		<div class="text-center" > You don't have account yet? please <a [routerLink]="['/register']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Sign up here </a> </div>
+	</form>
+</div>

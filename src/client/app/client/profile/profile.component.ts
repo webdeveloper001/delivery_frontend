@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiCall } from '../../service/api'
-import { Router } from '@angular/router';
+import { VariableService } from './../service/VariableService'
 
 /**
  * This class represents the lazy loaded AboutComponent.
@@ -11,24 +10,12 @@ import { Router } from '@angular/router';
   templateUrl: 'profile.component.html',
   styleUrls: ['profile.component.css']
 })
-export class ProfileComponent { 
-  user: any = {
-  	email: '',
-  	username: '',
-  	phone: '',
-  	location: ''
-  };
-  constructor(private api: ApiCall, private router: Router){ 
-  	this.api.getprofile().subscribe((res) => {
-  		console.log(res);
-  		if(res['status'] == 'success') {
-  			this.user.email = res['email']
-  			this.user.username = res['username']
-  			this.user.phone = res['phone']
-  			this.user.location = res['location']
-  		} else {
-  			this.router.navigateByUrl('/login')
-  		}
-  	}); 
+export class ProfileComponent {  
+  user: any;
+  constructor(private global: VariableService){ 
+    this.user = this.global.getUser();
+    console.log("________________________________________________________"); 
+    console.log(this.user.email);
+    console.log("________________________________________________________"); 
   }
 }

@@ -8,7 +8,9 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="<%= APP_BASE %>assets/favicon/favicon-<%= ENV_CONFIG.ENV %>.ico" type="image/x-icon">
-
+  <link href="../../../node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBy_3tnA0WQODkCgel-6ts3hFQSI2Egu08"></script> -->
   <!-- inject:css -->
   <!-- endinject -->
 </head>
@@ -51,6 +53,10 @@
         'Not expecting this error? Report it at https://github.com/mgechev/angular-seed/issues');
     });
   </script>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>  
   <% } %>
 
 </body>

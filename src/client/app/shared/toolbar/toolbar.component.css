@@ -1,43 +1,23 @@
-:host {
-  background-color: #106cc8;
-  color: rgba(255, 255, 255, 0.87);
-  display: block;
-  height: 48px;
-  padding: 0 16px;
+.toolbar-spacer {
+  flex: 1 1 auto;
 }
-
-h1 {
-  display: inline;
-  font-size: 20px;
-  font-weight: normal;
-  letter-spacing: 0.1px;
-  line-height: 48px;
-}
-
-.more {
-  background: url("./assets/svg/more.svg");
-  float: right;
-  height: 24px;
-  margin-top: 12px;
-  width: 24px;
-}
-
-ul.top-nav {
-  list-style: none;
-  margin-right: 50px;
-  margin-top: 15px;
-}
-
-ul.top-nav li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
 a {
-  color: #fff;
-  text-decoration: none;
+	text-decoration: none;
 }
-
-.content {
-  min-height: 300px;
+h1 {
+	margin: 0;
+	margin-left: 20px;
+}
+.logger {
+	margin-right: 50px;
+	padding: 10px 20px;
+	border: 1px solid #551a8b;
+	border-radius: 10px;
+}
+.logger:hover {
+	color: #fff;
+	background: #551a8b;
+}
+.logger a {
+	color: inherit;
 }

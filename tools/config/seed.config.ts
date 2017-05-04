@@ -399,6 +399,10 @@ export class SeedConfig {
         'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
 
+      '@angular/material': 'node_modules/@angular/material/bundles/material.umd.js',
+      // 'angular2-google-maps':   'https://npmcdn.com/angular2-google-maps@0.12.0', 
+      'angular2-google-maps/core': 'node_modules/angular2-google-maps/core/core.umd.js', 
+
       'app/*': '/app/*',
       // For test config
       'dist/dev/*': '/base/dist/dev/*',

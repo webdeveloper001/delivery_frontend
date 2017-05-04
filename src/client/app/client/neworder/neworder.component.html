@@ -1,3 +1,109 @@
 <div class="neworder">
-Neworder Form
+
+	<form class="ui form" #f='ngForm' (ngSubmit)="onSubmit(f.value)" >
+		<!-- <h1 class="text-left ui header" > New Order </h1> -->
+		<button md-raised-button type="submit" name="createorder" class="pull-right submit-button" > 
+			<md-icon md-font-set="material-icons"> send </md-icon> 
+			New Order 
+		</button>
+		<h3> - Location Info </h3>
+		<div class="row">
+			<label class="fieldname text-center"> Pickup location : </label>
+			<md-input-container class="address">
+				<input mdInput type="text" [(ngModel)]="pickupaddress" required class="form-control" placeholder="Address" name="pickupaddress" />
+			</md-input-container>
+			<md-input-container class="postcode">
+				<input mdInput type="number" [(ngModel)]="pickuppost" required class="md-block form-control" placeholder="Postcode" name="pickuppost" maxlength="5" minlength="5" />
+			</md-input-container >
+	        <md-select class="form-control state" required mdSelect [(ngModel)]="pickupstate" name="pickupstate" #pick_up_state_selector placeholder="Select your state">
+	          <!-- <md-option value="" selected disabled>Select Your Country</md-option> -->
+	          <md-option mdOption *ngFor="let state of states['Malaysia']" [value]="state">{{state}}</md-option>
+	        </md-select>
+	        <button md-raised-button type="button" class="fromaddrbook" > <md-icon md-font-set="material-icons"> my_library_books </md-icon> </button>
+		</div>
+
+		<div class="row">
+			<label class="fieldname text-center"> Drop location : </label>
+			<md-input-container class="address">
+				<input mdInput type="text" [(ngModel)]="dropaddress" required class="form-control" placeholder="Address" name="dropaddress" />
+			</md-input-container>
+			<md-input-container class="postcode">
+				<input mdInput type="number" [(ngModel)]="droppost" required class="md-block form-control" placeholder="Postcode" name="droppost" maxlength="5" minlength="5" />
+			</md-input-container >
+	        <md-select class="form-control state" required mdSelect [(ngModel)]="dropstate" name="dropstate" #drop_state_selector placeholder="Select your state">
+	          <!-- <md-option value="" selected disabled>Select Your Country</md-option> -->
+	          <md-option mdOption *ngFor="let state of states['Malaysia']" [value]="state">{{state}}</md-option>
+	        </md-select>
+	        <button md-raised-button type="button" class="fromaddrbook"> <md-icon md-font-set="material-icons"> my_library_books </md-icon> </button>
+		</div>
+
+		<div class="row">
+			<label class="fieldname"> . </label>
+			<md-input-container class="phone">
+				<input mdInput type="email" [(ngModel)]="dropemail" required class="form-control" placeholder="Receiver Email" name="dropemail" >
+			</md-input-container>
+		</div>
+
+		<div class="row">
+			<label class="fieldname text-center"> Service Info : </label>
+	        <md-select class="form-control" required mdSelect [(ngModel)]="ordertype" name="ordertype" #ordertype_selector placeholder="Select service type">
+	          <md-option mdOption *ngFor="let ot of ordertypes" [value]="ot.value">{{ot.text}}</md-option>
+	        </md-select>
+
+		</div>
+
+		<br/>
+		<div class="row documents">
+			<h3> - Documents </h3>
+			<div class="row doc-header">
+				<label class="doc_name" > Document Name </label>
+				<span class="doc_description" > Description </span>
+				<span class="doc_qty" > Quantity </span>
+				<span class="op-btn pull-right"> - </span>
+			</div>
+			<div class="row doc-item" *ngFor="let doc of documents" flex>
+				<label class="doc_number" style="display: none;" > {{doc.id}} </label>
+				<label class="doc_name" > {{ doc.name }} </label>
+				<span class="doc_description" > {{ doc.description }} </span>
+				<span class="doc_qty" > {{ doc.qty }} </span>
+				<button md-raised-button type="button" class="op-btn pull-right" (click)="deldoc(doc)" > 
+					<md-icon md-font-set="material-icons"> delete </md-icon> 
+				</button>
+			</div>
+			<div class="row doc-item doc-new">
+				<md-input-container class="doc_name" >
+					<input name="doc_name" type="text" mdInput  placeholder="Name" [(ngModel)]="docname" />
+				</md-input-container>
+				<md-input-container class="doc_description" >
+					<input name="doc_description" type="text" mdInput  placeholder="Description" [(ngModel)]="docdescription" />
+				</md-input-container>
+				<md-input-container class="doc_qty" >
+					<input name="doc_qty" type="number" mdInput  placeholder="Quantity" [(ngModel)]="docquantity" />
+				</md-input-container>
+				<button md-raised-button type="button" class="op-btn pull-right" (click)="adddoc()" > 
+					<md-icon md-font-set="material-icons"> note_add </md-icon> 
+				</button>
+			</div>
+		</div>
+
+	</form>
+
+</div>
+
+<div id="review-form">
+
+	<h4> SENDER: </h4>
+	<label> email: </label> <span> {{ senderemail }} </span>
+	<label> location: </label> <span> {{ pickupaddress + ' ' + pickuppost + ' ' + pickupstate }} </span>
+	<h3> RECEIVER: </h3>
+	<label> email: </label> <span> {{ dropemail }} </span>
+	<label> location: </label> <span> {{ dropaddress + ' ' + droppost + ' ' + dropstate }} </span>
+	<div class="row doc-item" *ngFor="let doc of documents" flex>
+		<label class="doc_number" style="display: none;" > {{doc.id}} </label>
+		<label class="doc_name" > {{ doc.name }} </label>
+		<span class="doc_description" > {{ doc.description }} </span>
+		<span class="doc_qty" > {{ doc.qty }} </span>
+	</div>
+	<img src="{{qrurl}}" width="300" />
+
 </div>

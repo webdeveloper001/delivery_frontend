@@ -5,6 +5,28 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular/material';
+import { MdButtonModule } from '@angular/material';
+import { MdButtonToggleModule } from '@angular/material';
+import { MdCardModule } from '@angular/material';
+import { MdCheckboxModule } from '@angular/material';
+import { MdGridListModule } from '@angular/material';
+import { MdIconModule } from '@angular/material';
+import { MdInputModule } from '@angular/material';
+import { MdListModule } from '@angular/material';
+import { MdMenuModule } from '@angular/material';
+import { MdProgressBarModule } from '@angular/material';
+// import { MdProgressCircleModule } from '@angular/material';
+import { MdRadioModule } from '@angular/material';
+import { MdSidenavModule } from '@angular/material';
+import { MdSliderModule } from '@angular/material';
+import { MdSlideToggleModule } from '@angular/material';
+import { MdTabsModule } from '@angular/material';
+
+import { MdTooltipModule } from '@angular/material';
+
+
 import { LoginComponent } from '../app/auth/auth.component'; 
 import { LogoutComponent } from '../app/auth/auth.component'; 
 import { RegisterComponent } from '../app/auth/auth.component'; 
@@ -32,7 +54,23 @@ import { ApiCall } from './service/api';
     HomeModule, 
     SharedModule.forRoot(), 
     ClientModule, 
-    ],
+    BrowserAnimationsModule, 
+    MaterialModule,
+    MdButtonModule,
+    MdButtonToggleModule,
+    MdCardModule,
+    MdCheckboxModule,
+    MdGridListModule,
+    MdIconModule,
+    MdInputModule,
+    MdListModule,
+    MdMenuModule,
+    MdProgressBarModule,
+    MdRadioModule,
+    MdSliderModule,
+    MdSlideToggleModule,
+    MdTabsModule,
+    MdTooltipModule,   ],
   declarations: [
   	AppComponent,
   	LoginComponent, 
@@ -41,7 +79,6 @@ import { ApiCall } from './service/api';
     ProfileComponent, 
     NewOrderComponent, 
     OrderListComponent, 
-    OrderStatusComponent, 
     DashboardComponent
   	],
   providers: [{

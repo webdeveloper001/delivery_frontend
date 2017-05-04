@@ -1,17 +1,11 @@
-<a [routerLink]="['/']"> <h1>DENNING <b>DELIVERY</b></h1> </a>
+<md-toolbar>
+	<a [routerLink]="['/']"> <h1>DENNING <b>DELIVERY</b></h1> </a>
 
-<div class="more"></div>
-<input type="hidden" value="{{ isAuthenticated() }}" />
-<ul class="pull-right top-nav" *ngIf="isAuthenticated() == false">
-	<li> 
-		<a [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Login </a>
-	</li>
-	<li>
-		<a [routerLink]="['/register']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Register </a>
-	</li>
-</ul>
-<ul class="pull-right top-nav" *ngIf='isAuthenticated() == true'>
-	<li>
-		<a [routerLink]="['/logout']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Logout </a>
-	</li>
-</ul>
+	<div class="more"></div>
+	<input type="hidden" value="{{ isAuthenticated() }}" />
+	<span class="toolbar-spacer"> </span>
+	<div class="logger">
+		<a *ngIf='isAuthenticated() == false' [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Login </a> 
+		<a *ngIf='isAuthenticated() == true' [routerLink]="['/logout']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}"> Logout </a> 
+	</div>
+</md-toolbar>

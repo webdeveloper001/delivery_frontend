@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ApiCall } from '../service/api'
+import { ApiCall } from '../service/api'; 
 import { Router } from '@angular/router';
+
 /**
  * This class represents the lazy loaded AboutComponent.
  */
@@ -21,8 +22,8 @@ export class LoginComponent {
 	this.api.login(form.email, form.password).subscribe((res) => {
     console.log(res)
 		if(res.status == 'success')
-      localStorage.setItem('Auth', true);
-			this.router.navigateByUrl('/client/profile')
+      localStorage.setItem('Auth', "true");
+			this.router.navigateByUrl('/client')
   	});
   }
 }
@@ -34,14 +35,22 @@ export class LoginComponent {
   styleUrls: ['auth.component.css']
 })
 export class RegisterComponent { 
-	constructor(private api: ApiCall) { }
+	constructor(private api: ApiCall, private router: Router) { }
+
+  err_msg:string = '';
 
 	onSubmit(form: any): void {
-		console.log('submitted value:', form):
+    if (form.password != form.password2) {
+      this.err_msg = 'Password doesn\'t match';
+      return;
+    }
+		console.log('submitted value:', form);
 		this.api.register(form).subscribe((res) => {
 			console.log(res)
-			// if(res['status'] == 'success')
-			// 	this.router.navigate(['/login']);
+			if(res['status'] == 'success')
+				this.router.navigate(['/login']);
+      else
+        this.err_msg = res['message'];
 		});
 	}
 }
@@ -54,9 +63,10 @@ export class RegisterComponent {
 export class LogoutComponent {
   constructor(private api: ApiCall, private router: Router) {
     this.api.logout().subscribe((res) => {
-      localStorage.setItem('Auth', false);
+      localStorage.setItem('Auth', "false");
       console.log(res);
       this.router.navigateByUrl('/')
     });
   }
+
 }

@@ -1,50 +1,33 @@
-<form class="text-center ui form" #f='ngForm' (ngSubmit)="onSubmit(f.value)" >
-	<h1 class="text-left"> Sign up </h1>
-	<div class="form-group">
-		<label class="text-right" > Username </label>
-		<input type="text" name="username" ngModel class="form-control" required />
-	</div>
-	<div class="form-group">
-		<label class="text-right" > Email </label>
-		<input type="email" name="email" ngModel class="form-control" required />
-	</div>
-	<div class="form-group">
-		<label class="text-right"> Password </label>
-		<input type="password" name="password" ngModel class="form-control" required />
-	</div>
-	<div class="form-group xs-margin">
-		<label class="text-right"> Password Confirm </label>
-		<input type="password" required />
-	</div>
+<div class="auth-show text-center">
+	<label style="font-size: 500px; color: #555; line-height: 0.8;">
+	DD
+	</label>
+</div>
+<div class="auth-form">
+	<form class="text-center ui form" #f='ngForm' (ngSubmit)="onSubmit(f.value)" >
+		<h1 class="text-left"> Sign up </h1>
 
-	<hr/>
+		<div layout="column">
+			<md-input-container class="full-width">
+				<input mdInput type="email" name="email" ngModel class="form-control" placeholder="Email" />
+			</md-input-container>
+			<md-input-container class="full-width">
+				<input mdInput type="password" name="password" ngModel class="md-block form-control" placeholder="Password" minlength="8" />
+			</md-input-container>
+			<md-input-container class="full-width">
+				<input mdInput type="password" name="password2" ngModel class="md-block form-control" placeholder="Password confirm" />
+			</md-input-container>
+			<label> {{ err_msg }} </label>
+		</div>
 
-	<div class="form-group xs-margin">
-		<label class="text-right"> First Name </label>
-		<input type="text" name="first_name" ngModel class="form-control" required />
-	</div>
-	<div class="form-group xs-margin">
-		<label class="text-right"> Last Name </label>
-		<input type="text" name="last_name" ngModel class="form-control" required />
-	</div>
-	<div class="form-group xs-margin">
-		<label class="text-right"> Location </label>
-		<input type="text" name="location" ngModel class="form-control" required />
-	</div>
-	<div class="form-group xs-margin">
-		<label class="text-right"> Phone </label>
-		<input type="number" name="phone" ngModel class="form-control" required />
-	</div>
+		<div class="text-center">
+			<button md-raised-button type="submit" name="signup" > Signup </button>
+		</div>
+		<p class="text-center"> ---------- OR ---------- </p>
+		<div class="text-center">
+			<button md-raised-button type="submit" name="signinwithoffice" > Signup with Office </button>
+			<button md-raised-button type="submit" name="signinwith365"  > Signup with 365 </button>
+		</div>
 
-	<hr/>
-
-	<div class="form-group text-center ">
-		<input type="submit" name="Signup" value="Signup" class="form-control"/>
-	</div>
-	<p class="text-center"> ---------- OR ---------- </p>
-	<div class="form-group text-center">
-		<input type="submit" name="signupwithoffice" value="Signup With Office" />
-		<input type="submit" name="signupwith365" value="Signup With 365" />
-	</div>
-
-</form>
+	</form>
+</div>
