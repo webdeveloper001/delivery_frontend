@@ -1,7 +1,57 @@
 .orderstatus {
-	
+	padding: 1%;
 }
 
 .sebm-google-map-container {
-  height: 300px;
+  height: 500px;
+  width: 100%;
+}
+
+.map-holder {
+	width: 40%;
+	margin-right: 5%;
+	box-shadow: 0 0 7px 3px #ccc;
+}
+
+.documents > * > * {
+	margin: 2%;
+}
+
+.documents .doc_name {
+	width: 7%;
+	margin-right: 2%;
+}
+
+.documents .doc_description {
+	width: 50%;
+}
+
+.documents .doc_qty {
+	width: 7%;
+}
+
+.documents .doc_unit_price {
+	width: 7%;
+}
+
+.documents .op-btn {
+	width: 3%;
+	min-width: 60px;
+	width: 60px;
+}
+
+.documents label, 
+.documents span {
+	display: inline-block;
+	padding: 10px 0;
+}
+
+.documents .doc-header {
+	border-bottom: 1px solid #000;
+}
+
+.order {
+	width: 50%;
+	float: left;
+	margin: 5px;
 }

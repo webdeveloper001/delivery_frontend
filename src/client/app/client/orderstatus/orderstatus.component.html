@@ -1,10 +1,42 @@
 <div class="orderstatus">
-Order Status
-</div>
+	<div class="pull-right map-holder">
+		<sebm-google-map [latitude]="lat" [longitude]="lng">
+		<!-- <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker> -->
+			<sebm-google-map-directions [origin]="origin" [destination]="destination" [waypoints]="waypoints"> 
+			</sebm-google-map-directions>
+		</sebm-google-map>
+	</div>
 
-<!-- <div *ngIf="origin != ''"> -->
-	<sebm-google-map [latitude]="lat" [longitude]="lng">
-	<!-- <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker> -->
-		<sebm-google-map-directions [origin]="origin" [destination]="destination" [waypoints]="waypoints"> </sebm-google-map-directions>
-	</sebm-google-map>
-<!-- </div> -->
+	{{ origin }}
+	{{ destination }}
+	{{ waypoints }}
+
+	<div class="order">
+
+		<div class="order-tracking">
+
+		</div>
+
+		<div class="order-detail">
+			<h2> Order No: <span> {{ cur.order.id }} </span> </h2>
+			<label> Order Status </label> <span> {{ cur.order.status }} </span>
+			<div class="related-docs documents">
+				<div class="row doc-header">
+					<label class="doc_name" > Name </label>
+					<span class="doc_description" > Description </span>
+					<span class="doc_unit_price"> Unit Price </span>
+					<span class="doc_qty" > Quantity </span>
+					<span class="doc_total"> Total </span>
+				</div>
+				<div class="row doc-item" *ngFor="let doc of cur.order.docs" flex>
+					<label class="doc_name" > {{ doc.name }} </label>
+					<span class="doc_description" > {{ doc.description }} </span>
+					<span class="doc_unit_price" > {{ doc.unit_price }} </span>
+					<span class="doc_qty" > {{ doc.quantity }} </span>
+					<span class="doc_total" > {{ doc.quantity * doc.unit_price }} </span>
+				</div>			
+			</div>
+		</div>
+
+	</div>
+</div>
