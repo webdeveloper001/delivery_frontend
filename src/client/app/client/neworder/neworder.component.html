@@ -15,7 +15,7 @@
 			<md-input-container class="postcode">
 				<input mdInput type="number" [(ngModel)]="pickuppost" required class="md-block form-control" placeholder="Postcode" name="pickuppost" maxlength="5" minlength="5" />
 			</md-input-container >
-	        <md-select class="form-control state" required mdSelect [(ngModel)]="pickupstate" name="pickupstate" #pick_up_state_selector placeholder="Select your state">
+	        <md-select class="form-control state" required mdSelect [(ngModel)]="pickupstate" name="pickupstate" #pick_up_state_selector placeholder="State">
 	          <!-- <md-option value="" selected disabled>Select Your Country</md-option> -->
 	          <md-option mdOption *ngFor="let state of states['Malaysia']" [value]="state">{{state}}</md-option>
 	        </md-select>
@@ -24,17 +24,24 @@
 
 		<div class="row">
 			<label class="fieldname text-center"> Drop location : </label>
+			<md-input-container class="company">
+				<input mdInput type="text" [(ngModel)]="dropcompany" class="form-control" placeholder="Drop Company" name="dropcompany"  [mdAutocomplete]="auto" [formControl]="companyCtrl">
+			</md-input-container>
+			<md-autocomplete #auto="mdAutocomplete">
+				<md-option *ngFor="let company of filteredCompanies | async" [value]="company.name">
+					{{ company.name }}
+				</md-option>
+			</md-autocomplete>
 			<md-input-container class="address">
 				<input mdInput type="text" [(ngModel)]="dropaddress" required class="form-control" placeholder="Address" name="dropaddress" />
 			</md-input-container>
 			<md-input-container class="postcode">
 				<input mdInput type="number" [(ngModel)]="droppost" required class="md-block form-control" placeholder="Postcode" name="droppost" maxlength="5" minlength="5" />
 			</md-input-container >
-	        <md-select class="form-control state" required mdSelect [(ngModel)]="dropstate" name="dropstate" #drop_state_selector placeholder="Select your state">
+	        <md-select class="form-control state" required mdSelect [(ngModel)]="dropstate" name="dropstate" #drop_state_selector placeholder="State">
 	          <!-- <md-option value="" selected disabled>Select Your Country</md-option> -->
 	          <md-option mdOption *ngFor="let state of states['Malaysia']" [value]="state">{{state}}</md-option>
 	        </md-select>
-	        <button md-raised-button type="button" class="fromaddrbook"> <md-icon md-font-set="material-icons"> my_library_books </md-icon> </button>
 		</div>
 
 		<div class="row">
@@ -157,7 +164,7 @@
 					<span class="doc_total" > {{ doc.quantity * doc.unit_price }} </span>
 				</div>
 			</div>
-			<img src="{{qrurl}}" width="300" />
+			<img src="{{qrurl}}" width="150" class="pull-right" />
 		</div>
 		<button md-raised-button type="button" class="op-btn pull-right" (click)="print()" > 
 			<md-icon md-font-set="material-icons"> print </md-icon>  Print 

@@ -67,6 +67,12 @@ export class ApiCall{
 			.catch(this.handleError)
 	}
 
+	getaddress(data: any): Observable<any> {
+		return this.http.post('http://ddbackend-edeveloper3666886.codeanyapp.com/addressbook/', data)
+			.map((res, Response) => res.json())
+			.catch(this.handleError)
+	}
+
 	private handleError (error: any) {
 		// In a real world app, we might use a remote logging infrastructure
 		// We'd also dig deeper into the error to get a better message

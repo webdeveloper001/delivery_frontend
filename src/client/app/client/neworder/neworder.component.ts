@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { VariableService } from './../service/VariableService'
 import { ApiCall } from '../../service/api'; 
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MdAutocompleteModule } from '@angular/material';
 declare var $: any;
 
 
@@ -22,12 +24,16 @@ export class NewOrderComponent {
 	droppost: string;
 	dropstate: string;
 	dropemail: string;
+	dropcompany: string;
+	dropcountry: string;
+	tp_company: string;
 
 	ordertype: any;
 	subordertype: any;
 	prechecklist: any = [];
 
 	documents: any = [];
+
 	docname: any;
 	docdescription: any;
 	docquantity: number = 1;
@@ -37,6 +43,11 @@ export class NewOrderComponent {
 	qrurl: string;
 
 	done: boolean = false;
+
+	companies = ['A'];
+
+	companyCtrl: FormControl ;
+	filteredCompanies: any;
 
 	countrylist: any = ['Malaysia'];
 	states : any = {
@@ -52,16 +63,8 @@ export class NewOrderComponent {
 			services: []
 		}
 	];
-	// ordertypes: any = [
-	// 	{ 
-	// 		'value': '1', 
-	// 		'text': 'Document'
-	// 	}, {
-	// 		'value': '1', 
-	// 		'text': 'Filing'
-	// 	}
-		
-	// ]; 
+
+	items:any = [];
 
 
 	@ViewChild("pick_up_state_selector") pick_up_state_selector : any;
@@ -73,6 +76,33 @@ export class NewOrderComponent {
 			this.ordertypes = res;
 			this.ordertype = this.ordertypes['services']['id'];
 		});
+	    this.companyCtrl = new FormControl();
+	    this.api.getaddress({action: 'getautocomplete'}).subscribe((res) => {
+	    	console.log(res);
+	    	this.companies = res['data'];
+		    this.filteredCompanies = this.companyCtrl.valueChanges
+		        .startWith(null)
+		        .map(name => this.filterCompanies(name));
+	    });
+	    console.log(this.user);
+	}
+
+	filterCompanies(val: string) {
+
+		let ret = val ? this.companies.filter(item => new RegExp(`^${val}`, 'gi').test(item.name)) : this.companies
+		console.log(ret);
+		if(ret.length >= 1) {
+			this.tp_company = ret[0]
+		}
+		if(ret.length == 0 && val == this.tp_company.name) {
+			this.dropaddress = this.tp_company.address;
+			this.dropemail = this.tp_company.email;
+			this.droppost = this.tp_company.postcode;
+			this.dropstate = this.tp_company.state;
+			this.dropcountry = this.tp_company.country;
+			this.dropemail = this.tp_company.email;
+		}
+		return ret;
 	}
 
 	adddoc(): void {
@@ -134,11 +164,11 @@ export class NewOrderComponent {
 	onSubmit(form: any): void {
 
 		let data = {
-			pickup: form.pickupaddress + ' ' + form.pickupstate + ' ' + form.pickpost, 
+			pickup: form.pickupaddress + ' ' + form.pickupstate + ' ' + form.pickuppost, 
 			drop: form.dropaddress + ' ' + form.dropstate + ' ' + form.droppost, 
 			type: form.ordertype == undefined? 'None': form.ordertype, 
 			dropemail: form.dropemail, 
-			documents: this.documents
+			documents: this.documents.concat(this.prechecklist)
 		}; 
 		console.log(data);
 		this.api.createorder(data).subscribe((res) => {
@@ -157,6 +187,10 @@ export class NewOrderComponent {
 	all_done() {
 		console.log("Done");
 		this.router.navigateByUrl('/client/orderstatus')
+	}
+
+	selected(value: any) {
+		console.log(value);
 	}
 
 }

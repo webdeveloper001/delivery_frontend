@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiCall } from '../service/api'; 
 import { Router } from '@angular/router';
+import { VariableService } from './../client/service/VariableService'
 
 /**
  * This class represents the lazy loaded AboutComponent.
@@ -15,7 +16,7 @@ export class LoginComponent {
   signoffice: string = 'Login in With Office'
   sign365:string = "Login in With 365"
 
-  constructor(private api: ApiCall, private router: Router){ }
+  constructor(private api: ApiCall, private router: Router, private global: VariableService){  }
 
   onSubmit(form: any): void {  
     console.log('you submitted value:', form);  
@@ -23,6 +24,7 @@ export class LoginComponent {
     console.log(res)
 		if(res.status == 'success')
       localStorage.setItem('Auth', "true");
+      // this.global.setUser()
 			this.router.navigateByUrl('/client')
   	});
   }

@@ -1,0 +1,58 @@
+<div class="neworder">
+
+	<!-- <h1 class="text-left ui header" > New Order </h1> -->
+	<form>
+		<div class="row documents">
+			<h3> Address Book </h3>
+			<div class="row doc-header">
+				<label class="doc_name" > Company Name </label>
+				<span class="doc_description" > Address </span>
+				<span class="doc_unit_price"> City </span>
+				<span class="doc_qty" > State </span>
+				<span class="doc_total"> Postcode </span>
+				<span class="op-btn pull-right"> - </span>
+			</div>
+
+			<div class="row doc-item" *ngFor="let company of commpanies" flex>
+				<label class="company_id" style="display: none;" > {{company.id}} </label>
+				<label class="name" > {{ company.name }} </label>
+				<span class="address" > {{ company.address }} </span>
+				<span class="city" > {{ company.city }} </span>
+				<span class="postcode" > {{ company.postcode }} </span>
+				<span class="state" > {{ company.state }} </span>
+				<span class="country"> {{ company.country }} </span>
+
+				<button md-raised-button type="button" class="op-btn pull-right" (click)="edit(doc)" > 
+					<md-icon md-font-set="material-icons"> edit </md-icon> 
+				</button>
+				<button md-raised-button type="button" class="op-btn pull-right" (click)="delete(doc)" > 
+					<md-icon md-font-set="material-icons"> delete </md-icon> 
+				</button>
+			</div>
+			<div class="row doc-item doc-new">
+				<md-input-container class="doc_name" >
+					<input name="doc_name" type="text" mdInput  placeholder="Name" [(ngModel)]="cpname" />
+				</md-input-container>
+				<md-input-container class="doc_description" >
+					<input name="doc_description" type="text" mdInput  placeholder="Description" [(ngModel)]="cpaddress" />
+				</md-input-container>
+				<md-input-container class="doc_unit_price" >
+					<input name="doc_unit_price" type="number" mdInput  placeholder="Unit price" [(ngModel)]="cpcity" />
+				</md-input-container>
+				<md-input-container class="doc_qty" >
+					<input name="doc_qty" type="number" mdInput  placeholder="Quantity" [(ngModel)]="cppostcode" />
+				</md-input-container>
+				<md-input-container class="doc_qty" >
+					<input name="doc_qty" type="number" mdInput  placeholder="Quantity" [(ngModel)]="cpstate" />
+				</md-input-container>
+				<md-input-container class="doc_qty" >
+					<input name="doc_qty" type="number" mdInput  placeholder="Quantity" [(ngModel)]="cpcountry" />
+				</md-input-container>
+				<button md-raised-button type="button" class="op-btn pull-right" (click)="create()" > 
+					<md-icon md-font-set="material-icons"> note_add </md-icon> 
+				</button>
+			</div>
+		</div>
+	</form>
+
+</div>

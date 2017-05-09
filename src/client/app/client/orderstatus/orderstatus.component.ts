@@ -56,21 +56,23 @@ export class OrderStatusComponent{
   }
 	
   constructor(private api: ApiCall, private router: Router, private global: VariableService){ 
-    api.getorder({'action': 'getorder', 'id': -1}).subscribe((res)=> {
-      console.log(res);
-      this.cur = res;
+    setTimeout(() => {
+      api.getorder({'action': 'getorder', 'id': -1}).subscribe((res)=> {
+        console.log(res);
+        this.cur = res;
 
-      this.origin = res.order.pick_up_location
-      this.destination = res.order.drop_location
-      this.waypoints = []
-      for(var i = 0; i < res.tracks.length; i ++) {
-        this.waypoints[this.waypoints.length] = {
-          location: res.tracks[i].location, 
-          stopover: true
+        this.origin = res.order.pick_up_location
+        this.destination = res.order.drop_location
+        this.waypoints = []
+        for(var i = 0; i < res.tracks.length; i ++) {
+          this.waypoints[this.waypoints.length] = {
+            location: res.tracks[i].location, 
+            stopover: true
+          }
         }
-      }
-      console.log(this);
-    });
+        console.log(this);
+      });      
+    }, 500) 
   }
 
 }

@@ -4,6 +4,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
@@ -36,6 +37,7 @@ import { NewOrderComponent } from '../app/client/neworder/neworder.component';
 import { OrderListComponent } from '../app/client/orderlist/orderlist.component'; 
 import { OrderStatusComponent } from '../app/client/orderstatus/orderstatus.component'; 
 import { DashboardComponent } from '../app/client/dashboard/dashboard.component'; 
+import { AddressBookComponent } from '../app/client/addressbook/addressbook.component';
 
 import { ClientModule } from '../app/client/client.module'; 
 
@@ -70,7 +72,10 @@ import { ApiCall } from './service/api';
     MdSliderModule,
     MdSlideToggleModule,
     MdTabsModule,
-    MdTooltipModule,   ],
+    MdTooltipModule,
+    FormsModule, 
+    ReactiveFormsModule
+   ],
   declarations: [
   	AppComponent,
   	LoginComponent, 
@@ -79,7 +84,8 @@ import { ApiCall } from './service/api';
     ProfileComponent, 
     NewOrderComponent, 
     OrderListComponent, 
-    DashboardComponent
+    DashboardComponent, 
+    AddressBookComponent
   	],
   providers: [{
     provide: APP_BASE_HREF,
